@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <title>RGB</title>
+    <style>
+        body {
+            line-height: 1.5;
+            color: #212529;
+            font-family: 'Indie Flower', cursive;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            align-content: space-around;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            margin-top: 5%;
+            margin: auto;
+            height: 100vh;
+        }
+
+        h1 {
+            margin: 5%;
+            text-align: center;
+        }
+
+        button {
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 13%;
+            height: 30px;
+            margin-top: 4%;
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.5vw;
+        }
+
+        #bod:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Нажмите на кнопку ниже и сгенерируйте случайную комбинацию градиента</h1>
+        <h2>Сгенерирована комбинация цветов <span id="span1"></span> <span id="span2"></span></h2>
+        <button id="bod">Klick me</button>
+    </div>
+
+</body>
+<script>
+    let bod = document.querySelector("#bod");
+    let letSpan1 = document.querySelector("#span1");
+    let letSpan2 = document.querySelector("#span2");
+    bod.onclick = getRandomColor;
+
+
+    function getRandomColor() {
+        let letters = '0123456789ABCDEF';
+        let color1 = '#';
+        let color2 = '#';
+        for (var i = 0; i < 6; i++) {
+            color1 += letters[getRandomValue(16)];
+            color2 += letters[getRandomValue(16)];
+            letSpan1.textContent = color1;
+            letSpan2.textContent = color2;
+            document.body.style.background = `linear-gradient(70deg, ${color1}  0%, ${color2} 100%)`;
+        }
+    }
+
+
+
+    function getRandomValue(max) {
+        return Math.floor(Math.random() * max);
+    }
+
+
+</script>
+
+</html>
